@@ -1,0 +1,30 @@
+name: Verify production
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check public website
+        shell: bash
+        run: |
+          set -euo pipefail
+          url="https://lex-interface-law-offices-hitesh-4927.vercel.app/"
+          for attempt in {1..12}; do
+            code="$(curl --location --silent --show-error --output page.html --write-out "%{http_code}" "$url")"
+            if [[ "$code" == "200" ]] && grep -q "Lex Interface" page.html; then
+              echo "Production website is public and contains the expected content."
+              exit 0
+            fi
+            echo "Attempt $attempt returned HTTP $code; waiting for deployment."
+            sleep 5
+          done
+          echo "Production verification failed."
+          exit 1
