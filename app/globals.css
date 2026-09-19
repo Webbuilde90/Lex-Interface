@@ -15,3 +15,36 @@ body{font-size:17px}.section-label,.eyebrow{font-size:12px}.site-nav a,.header-c
 @media(max-width:900px){.appointment-layout{grid-template-columns:1fr}.admin-page{padding-top:130px}.admin-header{display:block}.admin-actions{margin-top:26px}}
 @media(max-width:560px){.appointment-layout{gap:42px}.appointment-copy>p:not(.section-label){font-size:16px}.appointment-form{padding:22px 18px}.admin-login{padding:28px 22px}.admin-card{display:block}.admin-card select,.admin-status{display:inline-block;margin-top:16px}.admin-header h1{font-size:3rem}}
 
+/* Refined hero visual and high-contrast careers action. */
+.hero::after{background:radial-gradient(circle at 80% 25%,rgba(244,124,32,.12),transparent 38%),linear-gradient(90deg,rgba(255,253,248,.98),rgba(255,253,248,.82) 48%,rgba(255,253,248,.25));opacity:1;filter:none}
+.hero-art{margin:0;min-height:clamp(470px,53vw,660px);background:var(--white);border:1px solid rgba(24,24,24,.12);box-shadow:0 28px 70px rgba(22,19,16,.12);isolation:isolate}
+.hero-art::before{content:none}
+.hero-art::after{z-index:1;background:linear-gradient(90deg,rgba(255,253,248,.2),transparent 24%),linear-gradient(0deg,rgba(12,12,12,.08),transparent 28%)}
+.hero-art img{object-fit:cover;object-position:68% center;filter:saturate(.76) contrast(1.02);transition:transform 1.2s cubic-bezier(.2,.8,.2,1),filter .6s ease}
+.hero-art:hover img{transform:scale(1.018);filter:saturate(.9) contrast(1.03)}
+.linkedin-button{background:transparent;color:var(--white);border-color:var(--orange);min-width:150px}
+.linkedin-button svg{color:#ff9a4e}
+.linkedin-button:hover{background:var(--orange);border-color:var(--orange);color:var(--black)}
+.linkedin-button:hover svg{color:var(--black)}
+
+@media(max-width:900px){
+  .hero{min-height:auto;padding-top:108px}
+  .hero-grid{grid-template-columns:1fr;gap:0}
+  .hero-copy{padding:48px 0 34px;animation:none}
+  .hero-art{order:0;min-height:clamp(260px,63vw,420px);margin:0 0 58px;animation:none;box-shadow:0 18px 48px rgba(22,19,16,.1)}
+  .hero-art img{object-position:68% center;transition:none}
+  .hero-art:hover img{transform:none}
+  .hero-meta{margin-top:38px}
+  .page-intro .section-label,.page-intro .display,.page-intro .lede,.principle,.grid-card,.practice-item,.person-card,.career-card{animation:none;opacity:1;transform:none}
+}
+
+@media(max-width:560px){
+  .hero-copy{padding:38px 0 30px}
+  .hero-actions{display:grid;grid-template-columns:1fr}
+  .hero-actions .btn{width:100%}
+  .hero-art{min-height:245px;margin-bottom:42px}
+  .hero-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:32px;padding-top:22px;border-top:1px solid var(--line)}
+  .hero-meta strong{font-size:21px}
+  .career-card .linkedin-button{display:flex;width:100%;color:var(--white);border-color:#ff9a4e}
+}
+
